@@ -1,6 +1,5 @@
 def binary_search(value, list, first, last)
-  mid = (first - last) / 2
-  mid = mid.floor
+  mid = ((first + last) / 2).floor
 
   if first <= last
     if value > list[mid]
@@ -17,7 +16,7 @@ def binary_search(value, list, first, last)
   end
 end
 
-list = [23, 27, 59, 24, 71, 1, 75, 27, 33, 44].sort
+list = [12, 15, 19, 22, 25, 65, 98, 102, 325]
 
-result = binary_search(23, list, 0, list.size)
+result = binary_search(19, list, 0, list.size)
 puts result
