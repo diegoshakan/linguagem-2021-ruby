@@ -8,7 +8,9 @@ def count(string)
     elsif string[i] =~ /[0-9]/
       number += 1
     else
-      special += 1
+      if string[i] =~ /[^\s]/
+        special += 1
+      end
     end
   end
   puts("Letras Maiúsculas: #{upper}")
@@ -17,4 +19,4 @@ def count(string)
   puts("Caracteres Especiais: #{special}")
 end
 
-count("teste")
+count("teste**98TESTE")
