@@ -1,29 +1,28 @@
 list = [2, 4, -5, 1, 3]
 
-def merge_sort(list)
-  if list.size > 1
-    mid = (list.size / 2).to_i
+def sort(list)
+  return list if list.length <= 1
 
-    left = list.take(mid)
-    right = list.drop(mid)
+  mid = (list.length / 2).round
 
-    sorted_left = merge_sort(left)
-    sorted_right = merge_sort(right)
+  left_array  = list.take(mid)
+  right_array = list.drop(mid)
 
-    merge(sorted_left, sorted_right)
-  end
+  sorted_left = sort(left_array)
+  sorted_right = sort(right_array)
 
-
-  def merge(left_array, right_array)
-    left_array if right_array.empty?
-    right_array if left_array.empty?
-
-    small_number = left_array.first <= right_array.first ? left_array.shift : right_array.shift
-
-    again = merge(left_array, right_array)
-
-    [small_number].concat(again)
-  end
+  merge(sorted_left, sorted_right)
 end
 
-puts merge_sort(list)
+def merge(left, right)
+  return left if right.empty?
+  return right if left.empty?
+
+  small_number = left.first <= right.first ? left.shift : right.shift
+
+  again = merge(left, right)
+
+  [small_number].concat(again)
+end
+
+print sort(list)
