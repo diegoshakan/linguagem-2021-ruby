@@ -12,14 +12,18 @@ def merge_sort(list)
 
     merge(sorted_left, sorted_right)
   end
+
+
+  def merge(left_array, right_array)
+    left_array if right_array.empty?
+    right_array if left_array.empty?
+
+    small_number = left_array.first <= right_array.first ? left_array.shift : right_array.shift
+
+    again = merge(left_array, right_array)
+
+    [small_number].concat(again)
+  end
 end
 
-def merge(left_array, right_array)
-  if right_array.empty?
-    left_array
-  end
-
-  if left_array.empty?
-    right_array
-  end
-end
+puts merge_sort(list)
