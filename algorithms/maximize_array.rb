@@ -1,12 +1,28 @@
-lista = [9, 8, 8, 5]
-k = 3
+list = [-3, -2, -1, 5, 6]
+k = 4
 
-for i in 0..k-1
-  if lista[i] < 0
-    lista[i] = lista[i] * (-1)
+def maximize_array(list, k)
+
+  k.times do
+    min = list.max
+
+    index = 0
+    list.each_with_index do |item, i| # percorrer o array e informar o index
+      if item < min
+        min = item
+        index = i
+      end
+    end
+
+    next if min == 0
+
+    list[index] = -list[index]
   end
+
+  sum = list.sum
 end
 
-puts lista.sum
+puts maximize_array(list, k)
+
 
 
